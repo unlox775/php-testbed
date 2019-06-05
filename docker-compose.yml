@@ -1,0 +1,29 @@
+version: '3.2'
+
+services:
+  apache_php5:
+    build: './php/'
+    depends_on:
+      - mongo
+    networks:
+      - backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./code/public_html/:/var/www/html/
+      - ./code/application/:/var/www/application/
+  # mysql:
+  #   image: mysql:5.6.40
+  #   networks:
+  #     - backend
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=rootpassword
+  mongo:
+    image: mongo
+    networks:
+      - backend
+    command: --smallfiles      
+
+networks:
+  # frontend:
+  backend:
