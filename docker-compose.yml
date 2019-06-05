@@ -12,6 +12,7 @@ services:
     volumes:
       - ./code/public_html/:/var/www/html/
       - ./code/application/:/var/www/application/
+      - ./code/lib/:/var/www/lib/
   # mysql:
   #   image: mysql:5.6.40
   #   networks:
@@ -22,8 +23,14 @@ services:
     image: mongo
     networks:
       - backend
-    command: --smallfiles      
-
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports:
+        - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
 networks:
   # frontend:
   backend:

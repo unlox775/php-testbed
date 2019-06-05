@@ -1,5 +1,5 @@
 FROM php:5-apache
-
+RUN a2enmod rewrite
 RUN apt-get update; \
 	apt-get install openssl libssl-dev libcurl4-openssl-dev git -y; \
 	pecl install mongo; \
