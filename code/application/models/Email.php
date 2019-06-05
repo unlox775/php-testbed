@@ -1,7 +1,6 @@
 <?php
 
-class Email
-{
+class Email {
     private $email;
 
     private function __construct($email) {
