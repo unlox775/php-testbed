@@ -1,8 +1,6 @@
 <?php
 
 $GLOBALS['PHP_START_microtime'] = microtime(true);
-error_reporting(E_ALL);
-ini_set("display_errors",1);
 define('CODE_ROOT', realpath('../'));
 define('APPLICATION_PATH', CODE_ROOT .'/application');
 require_once( APPLICATION_PATH .'/config/Bootstrap.php');
