@@ -13,3 +13,8 @@ RUN mv composer.phar /usr/local/bin/composer
 #PHPUNIT
 RUN composer global require "phpunit/phpunit"
 
+## THE LIFE SAVER
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+RUN chmod +x /wait
+
+CMD /wait && apache2-foreground
